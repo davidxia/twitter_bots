@@ -1,0 +1,6 @@
+1. gem install twitter
+2. gem install mysql
+3. import twitter_bots.sql file into mysql
+4. add data to the tables
+5. change tweet_bots.rb accordingly
+6. schedule cronjob to run tweet_bots.rb
