@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 #$LOAD_PATH << '/home/david/twitter_bots/'
 
+#require 'rubygems'
 require '/home/david/twitter_bots/twitterbot.rb'
 
 mcnulty = TwitterBot.new('jamesmcnulty')
