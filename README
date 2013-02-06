@@ -1,9 +1,0 @@
-1. create Twitter app
-2. save app's consumer tokens to twitterbot.rb
-3. change constants in twitterbot.rb accordingly
-4. gem install twitter
-5. gem install dbi
-6. import twitter_bots.sql file into mysql
-7. add data to the tables
-8. change tweet_bots.rb accordingly
-9. schedule cronjob to run tweet_bots.rb

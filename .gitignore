@@ -1,5 +1,4 @@
-*.swp
-*.swo
-.DS_Store
-
-twitterbot.rb
+env
+data
+data_init.py
+cron.log
