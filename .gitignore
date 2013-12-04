@@ -1,4 +1,4 @@
 env
 data
 data_init.py
-cron.log
+logs

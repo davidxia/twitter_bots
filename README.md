@@ -8,24 +8,42 @@ or if you're using virtualenv
 
     (env)$ pip/install.py
 
-Pickle a dictionary of user data:
+Create a JSON file of user data and put into `data/bot_name`:
 
-    import pickle
-
-    jamesmcnulty = {
-        'access_token': 'blah',
-        'access_token_secret': 'blah',
-        'last_replied_tweet_id': 289070795626512384,
-        'is_active': 1,
-        'quotes': [
+    {
+        "access_token": "foo",
+        "access_token_secret": "bar",
+        "is_active": 1,
+        "last_replied_tweet_id": 408329902472314900,
+        "quotes": [
             "quote1",
             "quote2",
         ],
     }
 
-    pickle.dump(jamesmcnulty, open('data/jamesmcnulty', 'wb'))
+Define your bots in `twitter_bots.conf`:
 
-Define your bots' pickled data files in `tweet_bots.py` and cron it:
+    {
+      "logging": {
+        "logfile": "logs/log",
+        "max_bytes": 1000000,
+        "backup_count": 5
+      },
+      "bot_usernames": [
+        "jamesmcnulty",
+        "draper_don",
+        "getmebauer",
+        "sookie_stakhaus",
+        "walterwhite_",
+        "doctor_ghouse",
+        "ned_stark_",
+        "portlandiafred",
+        "portlandiacarie"
+      ],
+      "error_email": "david@davidxia.com"
+    }
+
+Cron it:
 
     # Run Twitter bots everyday at 13:00
-    0 13 * * * /bin/bash -c 'cd /path/to/botdir && ./tweet_bots.py' >> cron.log 2>&1
+    0 13 * * * /bin/bash -c 'cd /path/to/botdir && ./tweet_bots.py &>> cron.log'
