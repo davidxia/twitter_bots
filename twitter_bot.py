@@ -7,6 +7,7 @@ except ImportError:
     import json
 from random import choice
 import twitter
+from twitter import TwitterError
 
 
 class TwitterBot:
@@ -39,7 +40,13 @@ class TwitterBot:
         if len(statuses) > 0:
             status = statuses[0]
             trimmed_reply = "@%s %s" % (status.user.screen_name, self.random_quote())[:140]
-            updated_status = self.twitter_client.PostUpdate(trimmed_reply, in_reply_to_status_id=status.id)
+            try:
+                updated_status = self.twitter_client.PostUpdate(trimmed_reply, in_reply_to_status_id=status.id)
+            except TwitterError as e:
+                if 'over 140 char' in str(e):
+                    raise TwitterError(str(e), trimmed_reply)
+                else:
+                    raise e
             self.update_last_replied_tweet_id(status.id)
             return updated_status.text
         else:
