@@ -2,3 +2,5 @@ env
 data
 data_init.py
 logs
+
+config_local.py

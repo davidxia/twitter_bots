@@ -9,6 +9,8 @@ from random import choice
 import twitter
 from twitter import TwitterError
 
+import config
+
 
 class TwitterBot:
 
@@ -23,8 +25,8 @@ class TwitterBot:
         self.quotes = self.data['quotes']
         self.replies = self.data.get('replies')
         self.twitter_client = twitter.Api(
-            consumer_key='wgSiqzzG1yIANIwhqNZWCA',
-            consumer_secret='uBocxUaYDWByEbmoz3A0Un4cPyN6CZ3nlgdu4A7tSQ',
+            consumer_key=config.CONSUMER_KEY,
+            consumer_secret=config.CONSUMER_SECRET,
             access_token_key=self.data['access_token'],
             access_token_secret=self.data['access_token_secret']
         )
